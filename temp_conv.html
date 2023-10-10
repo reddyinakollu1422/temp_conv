@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .converter {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+     <link rel="stylesheet" type="text/css" href="temp_Conv.css">
+    <link rel="stylesheet" type="text/Javascript" href="temp_Conv.js"> 
+</head>
+<body>
+    <div class="converter">
+        <h2>Temperature Converter</h2>
+        <label for="celsiusInput">Enter Celsius temperature:</label>
+        <input type="number" id="celsiusInput" step="0.01" placeholder="Enter temperature" />
+        <button onclick="convertTemperature()">Convert</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function convertTemperature() {
+            const celsius = parseFloat(document.getElementById('celsiusInput').value);
+            if (!isNaN(celsius)) {
+                const fahrenheit = (celsius * 9 / 5) + 32;
+                const kelvin = celsius + 273.15;
+                document.getElementById('result').innerHTML = `
+                    ${celsius}°C is equal to ${fahrenheit.toFixed(2)}°F<br>
+                    ${celsius}°C is equal to ${kelvin.toFixed(2)} K
+                `;
+            } else {
+                document.getElementById('result').innerText = 'Please enter a valid temperature.';
+            }
+        }
+    </script>
+</body>
+</html>
